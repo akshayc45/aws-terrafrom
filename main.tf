@@ -9,12 +9,12 @@ resource "aws_vpc" "main" {
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "5.30.0"
+      source = "app.terraform.io/test28Dec/aws"
+      version = "5.31.0"
     }
   }
 }
-provider "aws" {
-  # alias = 'test'
-  region     = "eu-central-1"
+
+provider "aws" { 
+  # Configuration options 
 }
