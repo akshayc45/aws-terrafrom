@@ -1,20 +1,24 @@
-resource "aws_vpc" "main" {
-  cidr_block = "10.100.100.0/24"
-  tags = {
-    Name         = "Devop-test"
-    "Owner"      = "DevOps"
-    "created by" = "terraform"
+resource "null_resource" "example" {
+  # This triggers the resource whenever the message changes
+  triggers = {
+    message = "Hello, Terraform!"
+  }
+
+  provisioner "local-exec" {
+    command = "echo ${self.triggers.message}"
   }
 }
+
+
 terraform {
   required_providers {
-    aws = {
-      source = "app.terraform.io/test28Dec/aws"
-      version = "5.31.0"
+    null = {
+      source = "hashicorp/null"
+      version = "3.2.2"
     }
   }
 }
 
-provider "aws" { 
-  # Configuration options 
+provider "null" {
+  # Configuration options
 }
